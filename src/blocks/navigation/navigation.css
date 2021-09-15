@@ -1,0 +1,23 @@
+.navigation {
+    max-width: 880px;
+    margin: 0 auto 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(84,84,84,.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 1023px) {
+    .navigation {
+        margin: 0 auto 42px;
+        max-width: 720px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .navigation {
+        max-width: 320px;
+        padding: 0 30px;
+    }
+}
