@@ -12,7 +12,6 @@ import EditAvatarPopup from "./EditAvatarPopup.js";
 import AddPlacePopup from "./AddPlacePopup.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
-import NavBar from "./NavBar.js";
 import ProtectedRoute from "./ProtectedRoute.js";
 import * as authUser from "../utils/authUser.js";
 import InfoTooltip from "./InfoTooltip.js";
@@ -165,7 +164,9 @@ function App() {
                   history.push('/');
                 }
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+                console.log(err);
+            });
         }
     }, []);
     
@@ -182,6 +183,12 @@ function App() {
                 setInfoTooltipOpen(true);
                 return res;
             }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
+            setInfoTooltipOpen(true);
         });
     }
 
@@ -239,18 +246,12 @@ function App() {
                 />     
 
                 <Route exact path="/sign-up">
-                    <NavBar 
-                    title={"Войти"}
-                    url={"/sign-in"}
-                    />
+                    <Header />
                     <Register onRegister={onRegister} />
                 </Route>
 
                 <Route exact path="/sign-in">
-                    <NavBar 
-                    title={"Регистрация"}
-                    url={"/sign-up"}
-                    />
+                    <Header />
                     <Login onLogin={onLogin} />
                 </Route>
 

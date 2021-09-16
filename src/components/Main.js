@@ -25,7 +25,15 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike,
 
             <section className="grid-galery">
                 {onCards.map((card) => {
-                   return <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelite} />
+                   return (
+                    <Card 
+                        key={card._id} 
+                        card={card} 
+                        onCardClick={onCardClick} 
+                        onCardLike={onCardLike} 
+                        onCardDelete={onCardDelite} 
+                    />
+                   )
                 })}
             </section>
         </main> 

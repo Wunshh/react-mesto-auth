@@ -9,8 +9,11 @@ export const register = (password, email) => {
       },
       body: JSON.stringify({password, email})
     })
-    .then((response) => {
-      return response.json();
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
     .then((res) => {
       return res;
@@ -26,7 +29,12 @@ export const register = (password, email) => {
       },
       body: JSON.stringify({password, email})
     })
-    .then((response => response.json()));
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
   }
   
   export const getContent = (token) => {
@@ -38,6 +46,11 @@ export const register = (password, email) => {
         'Authorization': `Bearer ${token}`,
       }
     })
-    .then(res => res.json())
-    .then(data => data)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then(data => data);
   }
