@@ -168,24 +168,21 @@ function App() {
                 console.log(err);
             });
         }
-    }, []);
+    }, [history]);
     
 
     const onRegister = ({ password, email }) => {
         return authUser.register( password, email )
         .then((res) => {
-            if(!res || res.statusCode === 400){
-                setMessage({ image: imageError, text: "Что-то пошло не так! Попробуйте ещё раз." });
-                setInfoTooltipOpen(true);
-            }
             if(res) {
                 setMessage({ image: imageResolve, text: "Вы успешно зарегистрировались!" });
                 setInfoTooltipOpen(true);
                 return res;
-            }
+            } 
         })
         .catch((err) => {
             console.log(err);
+            setMessage({ image: imageError, text: "Что-то пошло не так! Попробуйте ещё раз." });
         })
         .finally(() => {
             setInfoTooltipOpen(true);
@@ -199,12 +196,13 @@ function App() {
                 setLoggedIn(true);
                 localStorage.setItem('jwt', data.token);
                 history.push('/');
-            } else {
-                setMessage({ image: imageError, text: "Что-то пошло не так! Попробуйте ещё раз." });
-                setInfoTooltipOpen(true);
-            }
+            } 
           })
-          .catch(err => console.log(err));
+          .catch((err) => {
+              console.log(err)
+              setMessage({ image: imageError, text: "Что-то пошло не так! Попробуйте ещё раз." });
+              setInfoTooltipOpen(true);
+            })
     }
 
     const onSignOut = () => {

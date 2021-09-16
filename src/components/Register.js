@@ -59,7 +59,7 @@ function Register({ onRegister }) {
                     required
                     value={password}
                     onChange={handlePasswordAdd}
-                    milLength="3"
+                    minLength="3"
                 />
                 <button className="login-page__save-button">Зарегистрироваться</button>
             </form>
