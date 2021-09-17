@@ -170,13 +170,11 @@ function App() {
         }
     }, [history]);
     
-
     const onRegister = ({ password, email }) => {
         return authUser.register( password, email )
         .then((res) => {
             if(res) {
                 setMessage({ image: imageResolve, text: "Вы успешно зарегистрировались!" });
-                setInfoTooltipOpen(true);
                 return res;
             } 
         })
