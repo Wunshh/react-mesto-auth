@@ -63,7 +63,7 @@ function Register({ onRegister }) {
                 />
                 <button className="login-page__save-button">Зарегистрироваться</button>
             </form>
-            <p className="login-page__subtitle">Уже зарегистрированы? <Link to={"/sign-in"} className="login-page__subtitle login-page__link">Войти</Link></p>
+            <p className="login-page__subtitle">Уже зарегистрированы? <Link to={"/signin"} className="login-page__subtitle login-page__link">Войти</Link></p>
         </div>
     )
 }

@@ -221,7 +221,7 @@ function App() {
                     userData={userData}
                     onSignOut={onSignOut}
                 /> 
-                : <Redirect to="/sign-up" 
+                : <Redirect to="/signup" 
             />}
 
             </Route>
@@ -241,12 +241,12 @@ function App() {
                     component={Main} 
                 />     
 
-                <Route exact path="/sign-up">
+                <Route exact path="/signup">
                     <Header />
                     <Register onRegister={onRegister} />
                 </Route>
 
-                <Route exact path="/sign-in">
+                <Route exact path="/signin">
                     <Header />
                     <Login onLogin={onLogin} />
                 </Route>

@@ -80,9 +80,9 @@ class Api {
 }
     
 const config = {
-    url: "https://mesto.nomoreparties.co/v1/cohort-26",
+    url: "https://api.last.nomoredomains.work",
     headers: {
-        authorization: "bf09fd5b-3c45-4e70-9b69-806c8df2b150",
+        // authorization: "bf09fd5b-3c45-4e70-9b69-806c8df2b150",
         "Content-Type": "application/json",
     },
 };

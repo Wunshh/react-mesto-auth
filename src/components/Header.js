@@ -25,17 +25,17 @@ function Нeader({ title, isOpen, onMenuClick, onClose, userData, onSignOut}) {
                 </div>
             </Route>
 
-            <Route exact path="/sign-in">
+            <Route exact path="/signin">
                 <div className="header__mob-menu">
                     <img className="header__logo" src={headerLogo} alt="Место" />
-                    <Link to={"/sign-up"} className="header__link">Регистрация</Link>
+                    <Link to={"/signup"} className="header__link">Регистрация</Link>
                 </div>
             </Route>
 
-            <Route exact path="/sign-up">
+            <Route exact path="/signup">
                 <div className="header__mob-menu">
                     <img className="header__logo" src={headerLogo} alt="Место" />
-                    <Link to={"/sign-in"} className="header__link">Войти</Link>
+                    <Link to={"/signin"} className="header__link">Войти</Link>
                 </div>
             </Route>
         </header>
