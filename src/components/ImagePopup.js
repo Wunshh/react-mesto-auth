@@ -12,7 +12,7 @@ function ImagePopup({card, onClose, onCloseKeyDown, onCloseOverlayClick}) {
             document.removeEventListener("keydown", onCloseKeyDown);
             currentPopup.removeEventListener("click", onCloseOverlayClick);
         }
-    }, [card, onClose]);
+    }, [card, onClose, onCloseKeyDown, onCloseOverlayClick]);
 
     return(
         <div className={`popup ${card.link && "popup_open"} popup_type_image"`} ref={popupLinkRef}>

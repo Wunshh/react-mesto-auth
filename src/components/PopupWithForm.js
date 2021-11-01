@@ -12,7 +12,7 @@ function PopupWithForm({isOpen, name, onClose, title, children, buttonText, onSu
             document.removeEventListener("keydown", onCloseKeyDown);
             currentPopup.removeEventListener("mousedown", onCloseOverlayClick);
         }
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, onCloseKeyDown, onCloseOverlayClick]);
 
     return(
         <div className={`popup popup_type_${name} ${isOpen ? "popup_open" : ""}`} ref={popupLinkRef}>

@@ -13,7 +13,7 @@ export default function InfoTooltip({ isOpen, onClose, message,  onCloseOverlayC
             document.removeEventListener("keydown", onCloseKeyDown);
             currentPopup.removeEventListener("click", onCloseOverlayClick);
         }
-    }, [onClose]);
+    }, [onClose, onCloseKeyDown, onCloseOverlayClick]);
 
     return(
         <div className={`popup ${isOpen && "popup_open"} popup_type_image"`} 

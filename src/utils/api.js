@@ -40,7 +40,7 @@ class Api {
     }
   
     changeLikeCardStatus(item, like) {
-      return fetch(`${this._url}/cards/likes/${item}`, {
+      return fetch(`${this._url}/cards/${item}/likes`, {
           method: like ? 'DELETE' : 'PUT',
           headers: this._headers,
       })
@@ -82,8 +82,8 @@ class Api {
 const config = {
     url: "https://api.last.nomoredomains.work",
     headers: {
-        // authorization: "bf09fd5b-3c45-4e70-9b69-806c8df2b150",
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
     },
 };
 

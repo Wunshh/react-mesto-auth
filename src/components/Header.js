@@ -1,10 +1,14 @@
 import headerLogo from "../images/header__logo.svg";
 import menuBotton from "../images/menu_button.svg";
 import closeButton from "../images/Close_Icon2.svg";
+import {useContext} from 'react';
 import { Route, Link } from 'react-router-dom';
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Нeader({ title, isOpen, onMenuClick, onClose, userData, onSignOut}) {
+function Нeader({ title, isOpen, onMenuClick, onClose, onSignOut}) {
 
+    const currentUser = useContext(CurrentUserContext);
+    
     return(
         <header className="header">
             <Route exact path="/">
@@ -19,7 +23,7 @@ function Нeader({ title, isOpen, onMenuClick, onClose, userData, onSignOut}) {
                         />
                     </div>
                     <div className={`header__container ${isOpen ? "header__container_active" : ""}`}>
-                        <p className="header__user-email">{ userData }</p>
+                        <p className="header__user-email">{ currentUser.email }</p>
                         <button type="button" className="header__button" onClick={onSignOut}>{title}</button>
                     </div>
                 </div>

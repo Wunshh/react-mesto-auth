@@ -3,20 +3,21 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 function Card({card, onCardClick, onCardLike, onCardDelete}) {
 
+    console.log(card);
     const currentUser = useContext(CurrentUserContext);
+
+    const isLiked = card.likes.some((item) => {
+        return item === currentUser._id
+    });
+
+    const cardLikeButtonClassName = (
+        `${isLiked ? 'card__button card__button_active' : 'card__button'}`
+    );
 
     const isOwn = card.owner._id === currentUser._id;
 
     const cardDeleteButtonClassName = (
     `${isOwn ? 'card__remove-button card__remove-button_visible' : 'card__remove-button'}`
-    );
-
-    const isLiked = card.likes.some((item) => {
-        return item._id === currentUser._id
-    });
-
-    const cardLikeButtonClassName = (
-        `${isLiked ? 'card__button card__button_active' : 'card__button'}`
     );
 
     function handleClick() {

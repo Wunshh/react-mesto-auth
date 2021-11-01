@@ -29,7 +29,6 @@ function App() {
     const [selectedCardDelet, setSelectedCardDelete] = useState(null);
     const [currentUser, setCurrentUser] = useState({});
     const [cards, setCards] = useState([]);
-    const [userData, setUserData] = useState("email");
     const [message, setMessage] = useState({ image: "", text: "" });
     const [isInfoTooltipOpen, setInfoTooltipOpen] = useState(false);
     const history = useHistory();
@@ -48,7 +47,7 @@ function App() {
 
     function handleCardLike(card) {
         const isLiked = card.likes.some((item) => {
-            return item._id === currentUser._id
+            return item === currentUser._id
         });
       
         api.changeLikeCardStatus(card._id, isLiked)
@@ -80,7 +79,7 @@ function App() {
     function handleAddPlaceSubmit(item) {
         api.postCards(item)
         .then(newCard => {
-            setCards([newCard, ...cards]);
+            setCards([...cards, newCard]);
             closeAllPopups();
         })
         .catch((err) => {
@@ -160,7 +159,6 @@ function App() {
             .then((res) => {
                 if (res) {
                   setLoggedIn(true);
-                  setUserData(res.data.email);
                   history.push('/');
                 }
             })
@@ -187,20 +185,20 @@ function App() {
         });
     }
 
-    const onLogin = ({ password, email }) => {
-        return authUser.authorize( password, email )
-        .then((data) => {
-            if (data.token){
-                setLoggedIn(true);
-                localStorage.setItem('jwt', data.token);
-                history.push('/');
-            } 
-          })
-          .catch((err) => {
-              console.log(err)
-              setMessage({ image: imageError, text: "Что-то пошло не так! Попробуйте ещё раз." });
-              setInfoTooltipOpen(true);
-            })
+    const onLogin = ({ password, email }) => { 
+        return authUser.authorize( password, email ) 
+        .then((data) => { 
+            if (data.token){ 
+                setLoggedIn(true); 
+                localStorage.setItem('jwt', data.token); 
+                history.push('/'); 
+            }  
+          }) 
+        .catch((err) => { 
+            console.log(err) 
+            setMessage({ image: imageError, text: "Что-то пошло не так! Попробуйте ещё раз." }); 
+            setInfoTooltipOpen(true); 
+        }) 
     }
 
     const onSignOut = () => {
@@ -218,7 +216,6 @@ function App() {
                     isOpen={isMenuOpen} 
                     onMenuClick={handleMenuClick}
                     onClose={closeAllPopups} 
-                    userData={userData}
                     onSignOut={onSignOut}
                 /> 
                 : <Redirect to="/signup" 
@@ -230,7 +227,6 @@ function App() {
                     exact
                     path="/"
                     loggedIn={loggedIn}
-                    userData={userData}
                     onEditProfile={handleEditProfileClick} 
                     onAddPlace={handleAddPlaceClick}  
                     onEditAvatar={handleEditAvatarClick} 

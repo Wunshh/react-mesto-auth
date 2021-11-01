@@ -34,7 +34,7 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike,
                         onCardDelete={onCardDelite} 
                     />
                    )
-                })}
+                }).reverse()}
             </section>
         </main> 
     );

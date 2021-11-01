@@ -25,7 +25,7 @@ function Login({ onLogin }) {
         if (localStorage.getItem('jwt')) {
           history.push('/');
         }
-    }, []);
+    }, [history]);
 
     function handlePasswordAdd(evt) {
         setPassword(evt.target.value);

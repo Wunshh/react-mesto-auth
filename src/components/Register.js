@@ -26,7 +26,7 @@ function Register({ onRegister }) {
         if (localStorage.getItem('jwt')) {
           history.push('/');
         }
-    }, []);
+    }, [history]);
 
     function handlePasswordAdd(evt) {
         setPassword(evt.target.value);
@@ -55,11 +55,9 @@ function Register({ onRegister }) {
                     type="password"
                     placeholder="Пароль"
                     name="password"
-                    minLength="3" 
                     required
                     value={password}
                     onChange={handlePasswordAdd}
-                    minLength="3"
                 />
                 <button className="login-page__save-button">Зарегистрироваться</button>
             </form>
