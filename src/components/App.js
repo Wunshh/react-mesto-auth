@@ -35,6 +35,7 @@ function App() {
 
 
     useEffect(() => {
+        if (loggedIn) {
         Promise.all([api.getInitialCards(), api.getUserInfoFromServer()])
         .then(([dataCards, dataUser]) => {
             setCards(dataCards);
@@ -43,7 +44,8 @@ function App() {
         .catch((err) => {
             console.log(err);
         });
-    }, []);
+        }
+    }, [loggedIn]);
 
     function handleCardLike(card) {
         const isLiked = card.likes.some((item) => {
@@ -61,7 +63,7 @@ function App() {
     
     function handleCardDelete(evt) {
         evt.preventDefault();
-        api.handlerdeleteCards(selectedCardDelet._id)
+        api.handlerDeleteCards(selectedCardDelet._id)
         .then(() => {
             setCards(cards => cards.filter((c) => c._id !== selectedCardDelet._id));
             setIsDeletePopupOpen(false);
